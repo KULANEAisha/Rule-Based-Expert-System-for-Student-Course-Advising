@@ -5,7 +5,7 @@
 
 ## Overview
 
-The Academic Course Advisor is a web application designed to guide students in selecting appropriate academic courses. It leverages a combination of a declarative rule engine and a structured decision tree, both implemented in Python, to generate personalized recommendations based on student-provided information. The user interface, built with HTML and styled using Bootstrap, features interactive course descriptions fetched dynamically from a backend API endpoint.
+The  Rule-Based-Expert-System-for-Student-Course-Advising is a web application designed to guide students in selecting appropriate academic courses. It leverages a combination of a declarative rule engine and a structured decision tree, both implemented in Python, to generate personalized recommendations based on student-provided information. The user interface, built with HTML and styled using Bootstrap, features interactive course descriptions fetched dynamically from a backend API endpoint.
 
 ## Key Features
 
