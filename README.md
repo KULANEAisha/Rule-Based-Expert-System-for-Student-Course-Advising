@@ -38,7 +38,7 @@ The  Rule-Based-Expert-System-for-Student-Course-Advising is a web application d
 
 3.  **Install dependencies:**
     ```bash
-    pip install Flask
+     pip install -r requirements.txt
     ```
 
 4.  **Ensure Data Directory:** Verify that a `data` directory exists in the project root and contains `courses.json` and `course_descriptions.json`.
@@ -112,4 +112,13 @@ clicking on the course that is recommended eg  Math102 gives u a small descripti
                             }
 
 ## Both the rule and decision tree must be satisfied to get a recommendation from both logics.
+
+## Contributing
+
+Contributions are welcome!
+
+If you'd like to improve this project:
+
+1.  Fork the repository.
+2.  Make your changes and submit a pull request.
 
