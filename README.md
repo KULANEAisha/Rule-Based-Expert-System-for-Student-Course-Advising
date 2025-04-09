@@ -27,7 +27,7 @@ The Academic Course Advisor is a web application designed to guide students in s
 1.  **Clone the repository:**
     ```bash
     git clone <repository_url>
-    cd academic_course_advisor_rule_based
+    cd # Rule-Based-Expert-System-for-Student-Course-Advising
     ```
 
 2.  **Create and activate a virtual environment (recommended):**
@@ -52,72 +52,63 @@ The Academic Course Advisor is a web application designed to guide students in s
 
 ## Architecture
 
-The application follows a standard web application architecture:
 
-* **Frontend (Presentation Layer):**
+
+* **Frontend (Input Pages Layer):**
     <img width="948" alt="image" src="https://github.com/user-attachments/assets/4b04742d-e102-4f71-aded-16437dae09f1" />
     <img width="712" alt="image" src="https://github.com/user-attachments/assets/2d00cea8-643f-44ec-b0f6-69c0bb86e075" />
     <img width="649" alt="image" src="https://github.com/user-attachments/assets/348bb4c5-9345-4ef1-b396-efcb509005bc" />
 
 
 
-* **Backend (Application and Data Layers):**
-    * `app.py`: The main Flask application file. It defines the routes for the homepage (`/`) to handle student input and display recommendations, and the API endpoint (`/api/course_descriptions`) to serve course descriptions. It instantiates the `CourseAdvisor` class.
-    * `advisor.py`: Contains the `CourseAdvisor` class, which encapsulates the core recommendation logic:
-        * Loading course data and rules from JSON files.
-        * Implementing the rule-based recommendation engine (`_rule_based_recommendations`).
-        * Implementing the decision tree traversal logic (`_decision_tree_recommendations`).
-        * Providing the `get_recommendations` method to orchestrate both recommendation strategies.
-    * `data/courses.json`: Stores basic information about the available courses (e.g., course code, name, difficulty).
-    * `data/course_descriptions.json`: Stores detailed descriptions for each course, used by the API endpoint.
+* **Results Page**
+* This the students profile
+<img width="638" alt="image" src="https://github.com/user-attachments/assets/4b528eb8-963f-45a4-81b4-f9fcfabcb7d5" />
+<img width="647" alt="image" src="https://github.com/user-attachments/assets/bb95e035-961c-4e91-9d34-3fd33a352f40" />
+clicking on the course that is recommended eg  Math102 gives u a small description about the course.
 
-## API Endpoint
 
-* **/api/course\_descriptions**:
-    * **Method:** `GET`
-    * **Response:** A JSON object where keys are course codes and values are their corresponding descriptions. This data is read from `data/course_descriptions.json`.
+
+
+
 
 ## Recommendation Logic
 
-* **Rule-Based System:** The `_rule_based_recommendations` method in `advisor.py` iterates through a predefined list of rules. Each rule specifies conditions based on student attributes (e.g., `completed`, `interests`, `gpa`) and a corresponding course recommendation. If a student's attributes satisfy the conditions of a rule, the associated course is recommended.
-* **Decision Tree:** The `_decision_tree_recommendations` method in `advisor.py` traverses a hardcoded decision tree structure. Based on the student's answers to questions defined at each node (derived from their attributes), the traversal follows specific branches until a course recommendation is reached.
+* **Rule-Based System:** The `_rule_based_recommendations` method in `advisor.py` iterates through a predefined list of rules. Each rule specifies conditions based on student attributes (e.g., `completed`, `interests`, `gpa`) and a corresponding course recommendation. If a student's attributes satisfy the conditions of a rule, the associated course is recommended. eg
 
-## Frontend Details
+* {
+                "if": {
+                    "completed": ["Math101"],
+                    "not_completed": ["Math102"],
+                    "interests": ["math", "calculus"],
+                    "min_gpa": 2.5,
+                    "difficulty_preference": ["intermediate", "advanced"]
+                },
+                "then": "Math102",
+                "feedback": ["Completed Math101", "Interested in math/calculus", "GPA meets requirement", "Prefers intermediate/advanced level"]
+            },
+            
+* **Decision Tree:** The `_decision_tree_recommendations` method in `advisor.py` traverses a hardcoded decision tree structure. Based on the student's answers to questions defined at each node (derived from their attributes), the traversal follows specific branches until a course recommendation is reached. eg
+* {
+            "question": "primary_interest",
+            "answers": {
+                "math": {
+                    "question": "preferred_difficulty",
+                    "answers": {
+                        "beginner": {"recommend": "Math101"},
+                        "intermediate": {
+                            "question": "completed_math101?",
+                            "answers": {
+                                "yes": {"recommend": "Math102"},
+                                "no": {"recommend": "Math101"}
+                            }
+                        },
+                        "advanced": {
+                            "question": "completed_math201?",
+                            "answers": {
+                                "yes": {"recommend": "Math301"},
+                                "no": {"suggest": "Consider Math201"}
+                            }
 
-* **Jinja2 Templating:** Used in `recommendations.html` to dynamically display the student's input, the lists of rule-based and decision tree recommendations, and course names.
-* **Bootstrap:** Provides the styling and layout for a responsive and visually appealing user interface.
-* **JavaScript:** The script block in `recommendations.html` fetches course descriptions from the `/api/course_descriptions` endpoint using the Fetch API when a course code (with the class `course-code-hover` and `data-course-code` attribute) is clicked. It then initializes a Bootstrap popover to display the fetched description.
-
-## Data Structures
-
-* **`data/courses.json`:**
-    ```json
-    {
-      "Math101": {"name": "Calculus I", "difficulty": "beginner"},
-      "CS101": {"name": "Introduction to Programming", "difficulty": "beginner"},
-      // ... more courses
-    }
-    ```
-
-* **`data/course_descriptions.json`:**
-    ```json
-    {
-      "Math101": "A foundational course in differential and integral calculus...",
-      "CS101": "Covers the basic principles of programming...",
-      // ... more detailed descriptions
-    }
-    ```
-
-* **Rules (in `advisor.py`):** A list of dictionaries, each containing `"if"` (conditions as a dictionary), `"then"` (the recommended course code), and optional `"feedback"` (list of strings explaining the recommendation).
-
-* **Decision Tree (in `advisor.py`):** A nested dictionary where keys represent questions or "recommend" actions, and values are further nested dictionaries representing answers or subsequent questions/recommendations.
-
-## Future Enhancements
-
-* Implement user authentication and session management.
-* Persist student data and recommendation history in a database.
-* Develop an administrative interface for managing courses, rules, and the decision tree.
-* Integrate more sophisticated recommendation algorithms.
-* Add unit and integration tests to ensure code quality.
-* Improve the user interface and user experience.
+## Both the rule and decision tree must be satisfied to get a recommendation from both logics.
 
