@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="admin-container">
+    <h2>Admin Panel</h2>
+    
+    <div class="upload-section">
+        <h3>Upload Historical Data</h3>
+        <form method="POST" action="{{ url_for('admin') }}" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="historical_data">CSV File:</label>
+                <input type="file" id="historical_data" name="historical_data" accept=".csv" required>
+                <small class="form-text">Upload CSV with student data to update the recommendation model</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Model</button>
+        </form>
+    </div>
+
+    <div class="model-info">
+        <h3>Model Information</h3>
+        {% if ml_model and hasattr(ml_model, 'model') and ml_model.model %}
+            <p><strong>Model Type:</strong> Random Forest Classifier</p>
+            <p><strong>Status:</strong> Trained</p>
+            <p><strong>Last Updated:</strong> {{ ml_model.last_update_time if hasattr(ml_model, 'last_update_time') else 'Unknown' }}</p>
+        {% else %}
+            <p><strong>Status:</strong> Not trained yet</p>
+        {% endif %}
+    </div>
+
+    <div class="data-format">
+        <h3>Expected CSV Format</h3>
+        <p>Your CSV should contain these columns (with headers):</p>
+        <ul>
+            <li><code>completed_courses</code> - comma-separated list (e.g., "Math101,CS101")</li>
+            <li><code>interests</code> - comma-separated list (e.g., "math,programming")</li>
+            <li><code>gpa</code> - numeric value (e.g., 3.5)</li>
+            <li><code>major</code> - text (e.g., "cs")</li>
+            <li><code>taken_courses</code> - comma-separated list of courses taken after (e.g., "Math102,CS201")</li>
+        </ul>
+        <p><a href="{{ url_for('static', filename='sample_data.csv') }}">Download sample CSV</a></p>
+    </div>
+
+    <a href="{{ url_for('index') }}" class="back-button">Back to Main Page</a>
+</div>
+{% endblock %}

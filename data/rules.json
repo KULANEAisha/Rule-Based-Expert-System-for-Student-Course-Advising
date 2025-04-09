@@ -1,0 +1,25 @@
+[
+    {
+        "name": "honors_math",
+        "if": {
+            "completed": ["Math102"],
+            "interests": ["math"],
+            "min_gpa": 3.5,
+            "max_gpa": 4.0
+        },
+        "then": "Math301H",
+        "priority": 2,
+        "reason": "Honors-level math based on high GPA"
+    },
+    {
+        "name": "data_science_path",
+        "if": {
+            "completed": ["CS101", "Math102"],
+            "interests": ["data analysis", "statistics"],
+            "min_gpa": 3.0
+        },
+        "then": "DS201",
+        "priority": 2,
+        "reason": "Data science career path recommendation"
+    }
+]

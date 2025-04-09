@@ -1,0 +1,18 @@
+{
+  "Math101": "<p>An essential introduction to differential and integral calculus, focusing on limits, derivatives, and basic integration techniques with real-world applications.</p>",
+  "Math102": "<p>Expands on single-variable calculus to cover multivariable functions, partial derivatives, multiple integrals, and vector calculus.</p>",
+  "CS101": "<p>An introductory programming course emphasizing core concepts such as variables, control structures, data types, and problem-solving using modern programming languages.</p>",
+  "CS201": "<p>Covers fundamental data structures—including arrays, linked lists, stacks, queues, trees, and graphs—and the design and analysis of efficient algorithms.</p>",
+  "Phys101": "<p>Explores the principles of classical mechanics and thermodynamics, including motion, forces, energy, and the laws of heat transfer.</p>",
+  "Phys102": "<p>Continues the physics sequence with a focus on electricity, magnetism, circuits, electromagnetic waves, and basic optics.</p>",
+  "Eng101": "<p>Develops academic writing and critical thinking skills through analysis, argumentation, and structured composition across various genres.</p>",
+  "Eng201": "<p>An advanced course in writing that emphasizes rhetorical strategies, research integration, and persuasive techniques across disciplines.</p>",
+  "DS301": "<p>A comprehensive course in data science that includes machine learning, statistical modeling, data visualization, and practical applications using real-world datasets.</p>",
+  "GameDev201": "<p>Focuses on the development of interactive game mechanics, physics simulations, and level design using intermediate programming and game engine tools.</p>",
+  "IntroToGameDev": "<p>Introduces the foundations of game development, including game design theory, basic scripting, and an overview of common engines and workflows.</p>",
+  "GeneralStudies101": "<p>Provides an interdisciplinary overview of key academic fields, encouraging intellectual curiosity, critical thinking, and broad-based knowledge acquisition.</p>",
+  "Bio101": "<p>Covers the core principles of biology, including cell structure, genetics, evolution, and ecological systems, with hands-on lab components.</p>",
+  "Chem101": "<p>Introduces chemical principles such as atomic structure, chemical bonding, stoichiometry, and the periodic table, with practical lab experiences.</p>",
+  "Math301": "<p>A rigorous study of advanced calculus and real analysis, including sequences, series, continuity, and convergence in mathematical proofs.</p>",
+  "Eng301": "<p>A high-level creative writing workshop focusing on narrative techniques, poetry, fiction, and personal expression through peer review and portfolio development.</p>"
+}

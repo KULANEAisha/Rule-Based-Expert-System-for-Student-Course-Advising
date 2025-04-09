@@ -1,0 +1,146 @@
+{
+    "Math101": {
+      "name": "Introduction to Calculus",
+      "prerequisites": [],
+      "difficulty": "beginner",
+      "learning_style_suitability": ["theoretical", "applied"],
+      "typical_time_commitment": "5_to_10",
+      "includes_group_projects": false,
+      "relevant_careers": ["mathematics", "engineering", "physics"]
+    },
+    "Math102": {
+      "name": "Intermediate Calculus",
+      "prerequisites": ["Math101"],
+      "difficulty": "intermediate",
+      "learning_style_suitability": ["theoretical", "applied"],
+      "typical_time_commitment": "5_to_10",
+      "includes_group_projects": false,
+      "relevant_careers": ["mathematics", "engineering", "physics", "data science"]
+    },
+    "CS101": {
+      "name": "Introduction to Programming",
+      "prerequisites": [],
+      "difficulty": "beginner",
+      "learning_style_suitability": ["applied", "visual", "kinesthetic"],
+      "typical_time_commitment": "10_to_15",
+      "includes_group_projects": true,
+      "relevant_careers": ["software engineering", "web development", "data analysis"]
+    },
+    "CS201": {
+      "name": "Data Structures and Algorithms",
+      "prerequisites": ["CS101"],
+      "difficulty": "intermediate",
+      "learning_style_suitability": ["theoretical", "applied"],
+      "typical_time_commitment": "10_to_15",
+      "includes_group_projects": true,
+      "relevant_careers": ["software engineering", "algorithm development"]
+    },
+    "Phys101": {
+      "name": "Introduction to Physics I",
+      "prerequisites": [],
+      "difficulty": "beginner",
+      "learning_style_suitability": ["theoretical", "visual"],
+      "typical_time_commitment": "5_to_10",
+      "includes_group_projects": false,
+      "relevant_careers": ["physics", "engineering", "astronomy"]
+    },
+    "Phys102": {
+      "name": "Introduction to Physics II",
+      "prerequisites": ["Phys101"],
+      "difficulty": "intermediate",
+      "learning_style_suitability": ["theoretical", "applied", "visual"],
+      "typical_time_commitment": "5_to_10",
+      "includes_group_projects": false,
+      "relevant_careers": ["physics", "engineering", "astronomy"]
+    },
+    "Eng101": {
+      "name": "Freshman Composition",
+      "prerequisites": [],
+      "difficulty": "beginner",
+      "learning_style_suitability": ["auditory", "visual", "kinesthetic"],
+      "typical_time_commitment": "5_to_10",
+      "includes_group_projects": true,
+      "relevant_careers": ["writing", "journalism", "communication"]
+    },
+    "Eng201": {
+      "name": "Advanced Composition",
+      "prerequisites": ["Eng101"],
+      "difficulty": "intermediate",
+      "learning_style_suitability": ["auditory", "visual", "theoretical"],
+      "typical_time_commitment": "5_to_10",
+      "includes_group_projects": true,
+      "relevant_careers": ["writing", "editing", "research"]
+    },
+    "DS301": {
+      "name": "Advanced Data Science",
+      "prerequisites": ["Math102", "CS101"],
+      "difficulty": "advanced",
+      "learning_style_suitability": ["theoretical", "applied"],
+      "typical_time_commitment": "more_than_15",
+      "includes_group_projects": true,
+      "relevant_careers": ["data scientist", "machine learning engineer", "data analyst"]
+    },
+    "GameDev201": {
+      "name": "Intermediate Game Development",
+      "prerequisites": [],
+      "difficulty": "intermediate",
+      "learning_style_suitability": ["applied", "visual", "kinesthetic"],
+      "typical_time_commitment": "more_than_15",
+      "includes_group_projects": true,
+      "relevant_careers": ["game developer", "game designer"]
+    },
+    "IntroToGameDev": {
+      "name": "Introduction to Game Development",
+      "prerequisites": [],
+      "difficulty": "beginner",
+      "learning_style_suitability": ["applied", "visual"],
+      "typical_time_commitment": "5_to_10",
+      "includes_group_projects": false,
+      "relevant_careers": ["game development", "interactive media"]
+    },
+    "GeneralStudies101": {
+      "name": "Introduction to General Studies",
+      "prerequisites": [],
+      "difficulty": "beginner",
+      "learning_style_suitability": ["theoretical", "applied", "visual", "auditory"],
+      "typical_time_commitment": "less_than_5",
+      "includes_group_projects": false,
+      "relevant_careers": []
+    },
+    "Bio101": {
+      "name": "Introduction to Biology",
+      "prerequisites": [],
+      "difficulty": "beginner",
+      "learning_style_suitability": ["visual", "auditory", "kinesthetic"],
+      "typical_time_commitment": "5_to_10",
+      "includes_group_projects": true,
+      "relevant_careers": ["biology", "medicine", "research"]
+    },
+    "Chem101": {
+      "name": "Introduction to Chemistry",
+      "prerequisites": [],
+      "difficulty": "beginner",
+      "learning_style_suitability": ["theoretical", "applied", "visual"],
+      "typical_time_commitment": "5_to_10",
+      "includes_group_projects": true,
+      "relevant_careers": ["chemistry", "pharmaceuticals", "materials science"]
+    },
+    "Math301": {
+      "name": "Advanced Calculus",
+      "prerequisites": ["Math102"],
+      "difficulty": "advanced",
+      "learning_style_suitability": ["theoretical"],
+      "typical_time_commitment": "10_to_15",
+      "includes_group_projects": false,
+      "relevant_careers": ["mathematics", "research"]
+    },
+    "Eng301": {
+      "name": "Creative Writing Workshop",
+      "prerequisites": ["Eng201"],
+      "difficulty": "advanced",
+      "learning_style_suitability": ["auditory", "kinesthetic"],
+      "typical_time_commitment": "5_to_10",
+      "includes_group_projects": true,
+      "relevant_careers": ["writing", "author", "content creation"]
+    }
+  }

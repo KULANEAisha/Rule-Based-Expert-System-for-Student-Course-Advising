@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-body p-4">
+                <h2 class="mb-4 text-center">Course Recommendation System</h2>
+
+                <form id="recommendationForm" method="POST" class="needs-validation" novalidate>
+                    <div id="page-0" class="form-section">
+                        <h3 class="mb-3">Basic Information</h3>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Your Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                    <div class="invalid-feedback">Please enter your name.</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="major" class="form-label">Your Major</label>
+                                    <input type="text" class="form-control" id="major" name="major">
+                                    <div class="form-text">Optional: Your field of study.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-grid mt-3">
+                            <button type="button" class="btn btn-primary btn-lg" onclick="nextPage(0)">Next</button>
+                        </div>
+                    </div>
+
+                    <div id="page-1" class="form-section hidden">
+                        <h3 class="mb-3">Personal Preferences</h3>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Current GPA</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" name="gpa"
+                                               min="0" max="4" step="0.1" required>
+                                        <span class="input-group-text">/ 4.0</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Preferred Learning Style</label>
+                                    <select class="form-select" name="learning_style">
+                                        <option value="">Select...</option>
+                                        <option value="theoretical">Theoretical/Conceptual</option>
+                                        <option value="applied">Applied/Practical</option>
+                                        <option value="visual">Visual</option>
+                                        <option value="auditory">Auditory</option>
+                                        <option value="kinesthetic">Hands-on/Kinesthetic</option>
+                                    </select>
+                                    <div class="form-text">How do you learn best?</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Preferred Course Difficulty</label>
+                                    <select class="form-select" name="difficulty_preference">
+                                        <option value="">Select...</option>
+                                        <option value="beginner">Beginner</option>
+                                        <option value="intermediate">Intermediate</option>
+                                        <option value="advanced">Advanced</option>
+                                    </select>
+                                    <div class="form-text">What level of challenge are you looking for?</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Time Commitment per Week (approx.)</label>
+                                    <select class="form-select" name="time_commitment">
+                                        <option value="">Select...</option>
+                                        <option value="less_than_5">Less than 5 hours</option>
+                                        <option value="5_to_10">5 to 10 hours</option>
+                                        <option value="10_to_15">10 to 15 hours</option>
+                                        <option value="more_than_15">More than 15 hours</option>
+                                    </select>
+                                    <div class="form-text">How much time can you dedicate to a course weekly?</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-3">
+                            <button type="button" class="btn btn-secondary btn-lg" onclick="previousPage(1)">Previous</button>
+                            <button type="button" class="btn btn-primary btn-lg" onclick="nextPage(1)">Next</button>
+                        </div>
+                    </div>
+
+                    <div id="page-2" class="form-section hidden">
+                        <h3 class="mb-3">Academic History and Interests</h3>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Completed Courses</label>
+                                <select class="form-select" name="completed" multiple size="5">
+                                    {% for course in courses %}
+                                    <option value="{{ course }}">{{ course }}</option>
+                                    {% endfor %}
+                                </select>
+                                <div class="form-text">Hold CTRL to select multiple</div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Academic Interests (comma-separated)</label>
+                                    <input type="text" class="form-control" name="interests"
+                                           placeholder="e.g., programming, math" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Specific Career Goals (optional)</label>
+                                    <input type="text" class="form-control" name="career_goals"
+                                           placeholder="e.g., Software Engineer, Data Scientist">
+                                    <div class="form-text">Knowing your goals helps tailor recommendations.</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Are you interested in courses with group projects?</label>
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" name="group_projects" value="yes" id="group_projects_yes">
+                                    <label class="form-check-label" for="group_projects_yes">Yes</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" name="group_projects" value="no" id="group_projects_no">
+                                    <label class="form-check-label" for="group_projects_no">No</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" class="form-check-input" name="group_projects" value="any" id="group_projects_any" checked>
+                                    <label class="form-check-label" for="group_projects_any">No preference</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-3">
+                            <button type="button" class="btn btn-secondary btn-lg" onclick="previousPage(2)">Previous</button>
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="bi bi-calculator me-2"></i>
+                                Generate Recommendations
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .form-section {
+        display: none; /* Initially hide all sections */
+    }
+    .form-section:first-child {
+        display: block; /* Show the first section */
+    }
+    .hidden {
+        display: none;
+    }
+</style>
+
+<script>
+    const formSections = document.querySelectorAll('.form-section');
+    let currentPage = 0;
+
+    function nextPage(pageIndex) {
+        formSections[pageIndex].style.display = 'none';
+        currentPage++;
+        if (currentPage < formSections.length) {
+            formSections[currentPage].style.display = 'block';
+        }
+    }
+
+    function previousPage(pageIndex) {
+        formSections[pageIndex].style.display = 'none';
+        currentPage--;
+        if (currentPage >= 0) {
+            formSections[currentPage].style.display = 'block';
+        }
+    }
+
+    // Initially show only the first page (Basic Information)
+    formSections.forEach((section, index) => {
+        if (index !== 0) {
+            section.style.display = 'none';
+        }
+    });
+</script>
+{% endblock %}
