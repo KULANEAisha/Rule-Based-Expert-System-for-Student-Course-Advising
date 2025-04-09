@@ -5,14 +5,13 @@
 
 ## Overview
 
-The  Rule-Based-Expert-System-for-Student-Course-Advising is a web application designed to guide students in selecting appropriate academic courses. It leverages a combination of a declarative rule engine and a structured decision tree, both implemented in Python, to generate personalized recommendations based on student-provided information. The user interface, built with HTML and styled using Bootstrap, features interactive course descriptions fetched dynamically from a backend API endpoint.
+The  Rule-Based-Expert-System-for-Student-Course-Advising is a web application designed to guide students in selecting appropriate academic courses. It leverages a combination of a declarative rule engine and a structured decision tree, both implemented in Python, to generate personalized recommendations based on student-provided information. 
 
 ## Key Features
 
-* **Rule-Based Recommendations:** Employs a predefined set of rules (defined in `advisor.py`) to suggest courses based on student attributes like completed courses, interests, GPA, learning style, and preferences.
-* **Decision Tree Recommendations:** Implements a hierarchical decision tree (also within `advisor.py`) to navigate through student attributes and arrive at course recommendations.
+* **Rule-Based Recommendations:** Employs a predefined set of rules to suggest courses based on student attributes like completed courses, learning style, and preferences.
+* **Decision Tree Recommendations:** Implements a hierarchical decision tree to navigate through student attributes and arrive at course recommendations.
 * **Interactive Course Descriptions:** Provides detailed course descriptions in Bootstrap popovers, fetched asynchronously from the `/api/course_descriptions` RESTful API endpoint.
-* **Clear Input Form:** A user-friendly HTML form (`index.html`) allows students to input their relevant academic information.
 * **Organized Output:** Recommendations from both the rule-based system and the decision tree are presented clearly on the `recommendations.html` page.
 
 
@@ -76,7 +75,7 @@ clicking on the course that is recommended eg  Math102 gives u a small descripti
 
 ## Recommendation Logic
 
-* **Rule-Based System:** The `_rule_based_recommendations` method in `advisor.py` iterates through a predefined list of rules. Each rule specifies conditions based on student attributes (e.g., `completed`, `interests`, `gpa`) and a corresponding course recommendation. If a student's attributes satisfy the conditions of a rule, the associated course is recommended. eg
+* **Rule-Based System:** The `_rule_based_recommendations` method iterates through a predefined list of rules. Each rule specifies conditions based on student attributes (e.g., `completed`, `interests`, `gpa`) and a corresponding course recommendation.  eg
 
 * {
                 "if": {
@@ -90,7 +89,7 @@ clicking on the course that is recommended eg  Math102 gives u a small descripti
                 "feedback": ["Completed Math101", "Interested in math/calculus", "GPA meets requirement", "Prefers intermediate/advanced level"]
             },
             
-* **Decision Tree:** The `_decision_tree_recommendations` method in `advisor.py` traverses a hardcoded decision tree structure. Based on the student's answers to questions defined at each node (derived from their attributes), the traversal follows specific branches until a course recommendation is reached. eg
+* **Decision Tree:** The `_decision_tree_recommendations` method in `advisor.py` traverses a hardcoded decision tree structure. Based on the student's answers to questions defined at each node, the traversal follows specific branches until a course recommendation is reached. eg
 * {
             "question": "primary_interest",
             "answers": {
