@@ -64,7 +64,8 @@ The  Rule-Based-Expert-System-for-Student-Course-Advising is a web application d
 * **Results Page**
 * This the students profile
 <img width="638" alt="image" src="https://github.com/user-attachments/assets/4b528eb8-963f-45a4-81b4-f9fcfabcb7d5" />
-<img width="577" alt="image" src="https://github.com/user-attachments/assets/8cceb9e2-6b95-442b-8d48-8dfdd288b6ec" />
+<img width="640" alt="image" src="https://github.com/user-attachments/assets/3296df0d-63a4-4445-9b8e-2a59645ac78a" />
+
 
 clicking on the course that is recommended eg  Math102 gives u a small description about the course.
 
