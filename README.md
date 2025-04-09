@@ -1,100 +1,123 @@
 # Rule-Based-Expert-System-for-Student-Course-Advising
 
 
+> A Flask-based web application providing academic course recommendations using a rule-based engine and a decision tree, enhanced with interactive course descriptions fetched via a RESTful API.
 
-> A simple web application that provides personalized academic course recommendations based on a student's profile.
+## Overview
 
-## What is This?
+The Academic Course Advisor is a web application designed to guide students in selecting appropriate academic courses. It leverages a combination of a declarative rule engine and a structured decision tree, both implemented in Python, to generate personalized recommendations based on student-provided information. The user interface, built with HTML and styled using Bootstrap, features interactive course descriptions fetched dynamically from a backend API endpoint.
 
-The Academic Course Advisor is designed to help students explore and identify courses that might be suitable for them. It uses a combination of predefined rules and a decision-making process to suggest courses based on information about the student's interests and academic background. Think of it as a basic digital academic advisor.
+## Key Features
 
-## How It Works (For a New User)
+* **Rule-Based Recommendations:** Employs a predefined set of rules (defined in `advisor.py`) to suggest courses based on student attributes like completed courses, interests, GPA, learning style, and preferences.
+* **Decision Tree Recommendations:** Implements a hierarchical decision tree (also within `advisor.py`) to navigate through student attributes and arrive at course recommendations.
+* **Interactive Course Descriptions:** Provides detailed course descriptions in Bootstrap popovers, fetched asynchronously from the `/api/course_descriptions` RESTful API endpoint.
+* **Clear Input Form:** A user-friendly HTML form (`index.html`) allows students to input their relevant academic information.
+* **Organized Output:** Recommendations from both the rule-based system and the decision tree are presented clearly on the `recommendations.html` page.
 
-Imagine you're a student looking for course suggestions. This application takes some information (like your interests and any courses you've already taken) and then uses two main methods to recommend courses:
 
-1.  **Rules:** It has a set of simple "if this, then that" rules. For example, "If you like math and haven't taken any advanced courses, we might suggest an introductory math course."
-2.  **Decision Tree:** It also uses a series of questions to guide you towards recommendations. It's like a flowchart where your answers lead to different course suggestions.
+## Tech Stack
 
-To make the experience better, when you see a course code (like "Math101"), you can click on it to see a short description of what the course is about.
+* **Backend:** Python 3.7+, Flask
+* **Frontend:** HTML, Jinja2, Bootstrap 5, JavaScript
+* **Data Storage (Static):** JSON (`data/courses.json`, `data/course_descriptions.json`)
 
-## Getting Started (Run It Yourself!)
+## Setup Instructions (For Developers)
 
-Follow these instructions to get the application running on your computer. You don't need to be a coding expert!
-
-### Prerequisites
-
-Before you start, make sure you have these things installed on your computer:
-
-1.  **Python:** If you don't have Python, go to [https://www.python.org/downloads/](https://www.python.org/downloads/) and download the latest version for your operating system (Windows, macOS, Linux). Follow the installation instructions on the website.
-2.  **pip:** This is a tool that comes with Python and helps install other software. You probably already have it if you installed Python correctly.
-
-### Installation
-
-1.  **Download the Project Files:**
-    * If you have a GitHub account, the easiest way is to "clone" the project. If you see a green "Code" button on the project page, click it and choose how you want to download (e.g., "HTTPS" and then copy the link). Open your computer's terminal or command prompt, navigate to a folder where you want to save the project, and type:
-      ```bash
-      git clone <the_link_you_copied>
-      cd <the_name_of_the_project_folder>
-      ```
-    * If you don't have Git, you can usually download the project files as a "ZIP" file from the platform where it's hosted. Download the ZIP, extract the files to a folder on your computer, and then open your terminal or command prompt and navigate into that extracted folder using the `cd` command (e.g., `cd AcademicCourseAdvisor-main`).
-
-2.  **Install Necessary Software (Flask):**
-    * Open your terminal or command prompt (make sure you are still inside the project folder you downloaded).
-    * Type the following command and press Enter:
-      ```bash
-      pip install Flask
-      ```
-      This will download and install Flask, which is what helps the application run in your web browser.
-
-### Running the Application
-
-1.  **Open Your Terminal or Command Prompt:** Make sure it's open in the project folder where the `advisor.py` file is located.
-
-2.  **Run the Application Command:** Type the following command and press Enter:
+1.  **Clone the repository:**
     ```bash
-    python advisor.py
+    git clone <repository_url>
+    cd academic_course_advisor_rule_based
     ```
-    You should see some messages appear in the terminal, usually indicating that the Flask development server has started. It will likely give you an address like `http://127.0.0.1:5000/`.
 
-3.  **Open in Your Web Browser:** Open your favorite web browser (like Chrome, Firefox, Safari, Edge) and type the address you saw in the terminal (`http://127.0.0.1:5000/`) into the address bar. Press Enter.
+2.  **Create and activate a virtual environment (recommended):**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # macOS/Linux
+    venv\Scripts\activate  # Windows
+    ```
 
-4.  **Using the Application:** You should now see the Academic Course Advisor application in your web browser. Follow the instructions on the page (if any input is required) to get course recommendations. You should be able to see the recommendations and click on the course codes to view their descriptions.
+3.  **Install dependencies:**
+    ```bash
+    pip install Flask
+    ```
 
-## Screenshots
+4.  **Ensure Data Directory:** Verify that a `data` directory exists in the project root and contains `courses.json` and `course_descriptions.json`.
 
-**(Include this section with clear screenshots of the key parts of the application as described in the previous README example.)**
+5.  **Run the development server:**
+    ```bash
+    python app.py
+    ```
+    Access the application in your web browser at `http://127.0.0.1:5000/`.
 
-## Understanding the Code and Data (Optional, but helpful for curious users)
+## Architecture
 
-If you're curious about how the application works behind the scenes, here's a quick overview:
+The application follows a standard web application architecture:
 
-* **`advisor.py`:** This file contains the main logic of the application. It has the rules for recommendations and the code that builds the decision tree. When you run `python advisor.py`, it starts the web server and handles the recommendations.
-* **`courses.json`:** This file is like a small database that stores information about all the available courses, such as their names and descriptions.
-* **`course_descriptions.json`:** This file contains more detailed descriptions that appear when you click on a course code in the application.
-* **`recommendations.html`:** This file is the webpage you see in your browser that displays the course recommendations. It uses some special tags (from a template engine) to show the information generated by `advisor.py`.
-* **`base.html`:** This is a basic structure for all the webpages in the application.
-* **`static/`:** This folder might contain other files like CSS (for styling the look of the website).
+* **Frontend (Presentation Layer):**
+    <img width="948" alt="image" src="https://github.com/user-attachments/assets/4b04742d-e102-4f71-aded-16437dae09f1" />
+    <img width="712" alt="image" src="https://github.com/user-attachments/assets/2d00cea8-643f-44ec-b0f6-69c0bb86e075" />
+    <img width="649" alt="image" src="https://github.com/user-attachments/assets/348bb4c5-9345-4ef1-b396-efcb509005bc" />
 
-## Contributing (If you want others to help)
 
-If you're open to others contributing to your project, explain how they can do so (as in the previous README example).
 
-## License
+* **Backend (Application and Data Layers):**
+    * `app.py`: The main Flask application file. It defines the routes for the homepage (`/`) to handle student input and display recommendations, and the API endpoint (`/api/course_descriptions`) to serve course descriptions. It instantiates the `CourseAdvisor` class.
+    * `advisor.py`: Contains the `CourseAdvisor` class, which encapsulates the core recommendation logic:
+        * Loading course data and rules from JSON files.
+        * Implementing the rule-based recommendation engine (`_rule_based_recommendations`).
+        * Implementing the decision tree traversal logic (`_decision_tree_recommendations`).
+        * Providing the `get_recommendations` method to orchestrate both recommendation strategies.
+    * `data/courses.json`: Stores basic information about the available courses (e.g., course code, name, difficulty).
+    * `data/course_descriptions.json`: Stores detailed descriptions for each course, used by the API endpoint.
 
-(As in the previous README example)
+## API Endpoint
 
-## Acknowledgments
+* **/api/course\_descriptions**:
+    * **Method:** `GET`
+    * **Response:** A JSON object where keys are course codes and values are their corresponding descriptions. This data is read from `data/course_descriptions.json`.
 
-(As in the previous README example)
+## Recommendation Logic
 
----
+* **Rule-Based System:** The `_rule_based_recommendations` method in `advisor.py` iterates through a predefined list of rules. Each rule specifies conditions based on student attributes (e.g., `completed`, `interests`, `gpa`) and a corresponding course recommendation. If a student's attributes satisfy the conditions of a rule, the associated course is recommended.
+* **Decision Tree:** The `_decision_tree_recommendations` method in `advisor.py` traverses a hardcoded decision tree structure. Based on the student's answers to questions defined at each node (derived from their attributes), the traversal follows specific branches until a course recommendation is reached.
 
-**Key Improvements for Understandability and Running:**
+## Frontend Details
 
-* **Simplified Language:** Avoids overly technical terms in the initial sections.
-* **Step-by-Step Running Instructions:** Provides very clear, actionable steps for installation and running, even for beginners.
-* **Emphasis on Prerequisites:** Clearly lists what needs to be installed beforehand.
-* **Explanation of Files:** Briefly describes the purpose of the key files in the project.
-* **Clear "How It Works" for a New User:** Focuses on the user's perspective of interacting with the application.
+* **Jinja2 Templating:** Used in `recommendations.html` to dynamically display the student's input, the lists of rule-based and decision tree recommendations, and course names.
+* **Bootstrap:** Provides the styling and layout for a responsive and visually appealing user interface.
+* **JavaScript:** The script block in `recommendations.html` fetches course descriptions from the `/api/course_descriptions` endpoint using the Fetch API when a course code (with the class `course-code-hover` and `data-course-code` attribute) is clicked. It then initializes a Bootstrap popover to display the fetched description.
 
-Remember to replace the placeholder paths for your screenshots and customize the "Contributing" and "Acknowledgments" sections as needed. This README should make it much easier for someone to understand your project and run it on their own.
+## Data Structures
+
+* **`data/courses.json`:**
+    ```json
+    {
+      "Math101": {"name": "Calculus I", "difficulty": "beginner"},
+      "CS101": {"name": "Introduction to Programming", "difficulty": "beginner"},
+      // ... more courses
+    }
+    ```
+
+* **`data/course_descriptions.json`:**
+    ```json
+    {
+      "Math101": "A foundational course in differential and integral calculus...",
+      "CS101": "Covers the basic principles of programming...",
+      // ... more detailed descriptions
+    }
+    ```
+
+* **Rules (in `advisor.py`):** A list of dictionaries, each containing `"if"` (conditions as a dictionary), `"then"` (the recommended course code), and optional `"feedback"` (list of strings explaining the recommendation).
+
+* **Decision Tree (in `advisor.py`):** A nested dictionary where keys represent questions or "recommend" actions, and values are further nested dictionaries representing answers or subsequent questions/recommendations.
+
+## Future Enhancements
+
+* Implement user authentication and session management.
+* Persist student data and recommendation history in a database.
+* Develop an administrative interface for managing courses, rules, and the decision tree.
+* Integrate more sophisticated recommendation algorithms.
+* Add unit and integration tests to ensure code quality.
+* Improve the user interface and user experience.
+
